@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/arrebole/databox/controllers"
-	
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
 func main() {
