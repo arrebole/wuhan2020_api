@@ -25,5 +25,4 @@
 
 read -p "Enter database password: " password
 export PASSWORD=$password
-#python3 ./app.py
-(python3 ./app.py 1>>./var/access.log 2>&1 &)
+(./main.out 1>>./var/access.log 2>&1 &)

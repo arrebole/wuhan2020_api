@@ -1,13 +1,25 @@
 # wuhan2020_api
-wuhan2020数据库 API接口
-
-version 0.0.1
+病毒爬虫提交平台
 
 
 
-### 提交数据
+## Table of contents
 
-> POST http://wuhan2020.muxxs.com/api/add
++ 提交数据
+  + [提交结构](#提交结构)
+  + [通过python3提交](#通过python3提交)
+
++ 获取数据
+  + [1、通过城市获取](#通过城市获取)
+  + [2、获取提交日志](#获取提交日志)
+
+
+
+### 提交结构
+
+> 接口POST http://wuhan2020.muxxs.com/api/add
+
+文章
 
 | 字段          | 说明     |
 | ------------- | -------- |
@@ -20,8 +32,11 @@ version 0.0.1
 | publish_date  | 发布日期 |
 | publish_time  | 发布时间 |
 | title         | 标题     |
+| uploader      | 提交者   |
 
-#### 使用python3提交数据
+
+
+### 通过python3提交
 
 > title重复会被判断为已存在
 
@@ -31,16 +46,17 @@ from urllib import request
 
 headers = {'Content-Type': 'application/json'}
 
-data = {
-    'province': "test",
-    'city': 'test',
-    'publish_time': '00:00:00',
-    'publish_date': '0',
-    'title': 'teeeeeeeeeee',
-    'content': "测试测试测试",
-    'link': "http://wsjkw.hebei.gov.cn/content/content_45/395747.whtml",
-    'links_to_pic': '0',
-    'announce_type': 0
+postdata = {
+        'uploader': '风行',  # 提交用户名， 用于记录
+    	'province': "test",
+    	'city': 'test',
+    	'publish_time': '00:00:00',
+    	'publish_date': '0',
+    	'title': 'teeeeeeeeeee',
+    	'content': "测试测试测试",
+    	'link': "http://wsjkw.hebei.gov.cn/content/content_45/395747.whtml",
+    	'links_to_pic': '0',
+    	'announce_type': 0
 }
 
 req = request.Request(
@@ -55,9 +71,11 @@ print(res.read().decode("utf-8"))
 
 
 
+
+
 ### 获取数据
 
-#### 通过城市获取数据
+#### 1、通过城市获取
 
 >GET http://wuhan2020.muxxs.com/api/read?city=<城市名>
 
@@ -68,7 +86,7 @@ GET http://wuhan2020.muxxs.com/api/read?city=test
 ```json
 {
   "code": 0,
-  "message": "成功",
+  "message": "success",
   "data": [
     {
       "announce_type": "0",
@@ -87,5 +105,23 @@ GET http://wuhan2020.muxxs.com/api/read?city=test
 
 
 
-Post的方法在postman.py里 把变量放进去就好 key是密码，key不对上传会失败
+#### 2、获取提交日志
+
+> GET http://wuhan2020.muxxs.com/api/logs?limit=1
+
+```json
+{
+  "code": 0,
+  "message": "成功",
+  "data": [
+    { 
+        "city": "上海", 
+        "ip": "120.227.30.249", 
+        "province": "上海", 
+        "time": "2020.02.10-19:10:44", 
+        "uploader": "BeiTown"
+    }
+  ]
+}
+```
 
