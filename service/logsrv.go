@@ -10,6 +10,6 @@ func SaveLog(log *model.Log) {
 // GetLogs ...
 func GetLogs(limit int) []model.Log {
 	var result []model.Log
-	db.Order("id desc").Find(&result)
+	db.Order("id desc").Limit(limit).Find(&result)
 	return result
 }
