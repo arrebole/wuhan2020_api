@@ -26,6 +26,6 @@ PATH=/home/godalike/go1.13.7/bin:$PATH
 go build -o main.out ./main.go
 read -p "Enter database password: " password
 export PASSWORD=$password
-./main.out
-#(./main.out 1>>./var/access.log 2>&1 &)
+(./main.out 1>>./var/access.log 2>&1 &)
+
 
