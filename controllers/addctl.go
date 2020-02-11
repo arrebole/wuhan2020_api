@@ -28,7 +28,10 @@ func AddCtl(w http.ResponseWriter, r *http.Request) {
 		w.Write(model.FailResp())
 		return
 	}
-	service.SaveArchive(postdata.GetArchive())
+	if !service.SaveArchive(postdata.GetArchive()){
+		w.Write(model.FailResp())
+		return
+	}
 	service.SaveLog(postdata.GetLog(r.RemoteAddr))
 	w.Write(model.SuccessResp())
 }

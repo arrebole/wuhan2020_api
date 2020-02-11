@@ -11,7 +11,7 @@ type PostData struct {
 // Archive ...
 type Archive struct {
 	ID           uint   `json:"id" gorm:"primary_key" `
-	AnnounceType string `json:"announce_type"`
+	AnnounceType int `json:"announce_type"`
 	City         string `json:"city"`
 	Content      string `json:"content"`
 	Link         string `json:"link"`
