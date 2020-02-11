@@ -18,7 +18,7 @@ func password() string {
 }
 
 func connect() *gorm.DB {
-	db, err := gorm.Open("mysql", "root:wuhan2020@/db?charset=utf8mb4&parseTime=True&loc=Local")
+	db, err := gorm.Open("mysql", "root:" + password() + "@/db?charset=utf8mb4&parseTime=True&loc=Local")
 	if err != nil {
 		panic("数据库连接失败"+ err.Error())
 	}
