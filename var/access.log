@@ -1,0 +1,8 @@
+./start.sh: line 28: ./main.out: Permission denied
+panic: 数据库连接失败
+
+goroutine 1 [running]:
+github.com/arrebole/databox/service.connect(0x14)
+	D:/Repository/wuhan2020_api_v2/service/db.go:22 +0x128
+github.com/arrebole/databox/service.init.0()
+	D:/Repository/wuhan2020_api_v2/service/db.go:12 +0x22
