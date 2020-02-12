@@ -23,7 +23,7 @@
 
 | 字段          | 说明     |
 | ------------- | -------- |
-| announce_type | 默认 “0” |
+| announce_type | 默认 0 |
 | city          | 市级名   |
 | content       | 主要内容 |
 | link          | 原文链接 |
