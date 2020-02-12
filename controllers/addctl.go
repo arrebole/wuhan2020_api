@@ -13,23 +13,23 @@ func AddCtl(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	if r.Method != "POST" {
-		w.Write(model.FailResp())
+		w.Write(model.FailResp("Only post method allowed"))
 		return
 	}
 
 	var postdata model.PostData
 	err := json.NewDecoder(r.Body).Decode(&postdata)
 	if err != nil {
-		w.Write(model.FailResp())
+		w.Write(model.FailResp("Type error"))
 		return
 	}
 
-	if postdata.Archive.City == "" || postdata.Archive.Title == "" {
-		w.Write(model.FailResp())
+	if !postdata.IsLegal() {
+		w.Write(model.FailResp("Missing data field"))
 		return
 	}
-	if !service.SaveArchive(postdata.GetArchive()){
-		w.Write(model.FailResp())
+	if !service.SaveArchive(postdata.GetArchive()) {
+		w.Write(model.FailResp("existed"))
 		return
 	}
 	service.SaveLog(postdata.GetLog(r.RemoteAddr))

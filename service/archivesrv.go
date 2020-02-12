@@ -22,9 +22,16 @@ func exist(link string) bool {
 	return false
 }
 
-// GetArchives ...
-func GetArchives(city string) []model.Archive {
+// GetArchivesByCity ...
+func GetArchivesByCity(city string) []model.Archive {
 	var result []model.Archive
 	db.Where("city = ?", city).Find(&result)
+	return result
+}
+
+// GetArchivesByProvince ...
+func GetArchivesByProvince(province string) []model.Archive {
+	var result []model.Archive
+	db.Where("province = ?", province).Find(&result)
 	return result
 }

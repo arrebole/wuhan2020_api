@@ -11,7 +11,7 @@ type PostData struct {
 // Archive ...
 type Archive struct {
 	ID           uint   `json:"id" gorm:"primary_key" `
-	AnnounceType int `json:"announce_type"`
+	AnnounceType int    `json:"announce_type"`
 	City         string `json:"city"`
 	Content      string `json:"content"`
 	Link         string `json:"link"`
@@ -36,4 +36,12 @@ func (p PostData) GetLog(ip string) *Log {
 // GetArchive ...
 func (p PostData) GetArchive() *Archive {
 	return &p.Archive
+}
+
+// IsLegal ...
+func (p PostData) IsLegal() bool {
+	if p.Title == "" || p.City == "" || p.Province == "" || p.Content == "" || p.Uploader == "" {
+		return false
+	}
+	return true
 }

@@ -10,10 +10,10 @@ type Response struct {
 }
 
 // FailResp ...
-func FailResp() []byte {
+func FailResp(msg string) []byte {
 	result, _ := json.Marshal(&Response{
 		Code:    -1,
-		Message: "errors",
+		Message: msg,
 		Data:    []Archive{},
 	})
 	return result
@@ -29,8 +29,8 @@ func SuccessResp() []byte {
 	return result
 }
 
-// ArchiveResp ...
-func ArchiveResp(archives []Archive) []byte {
+// ArchivesResp ...
+func ArchivesResp(archives []Archive) []byte {
 	result, _ := json.Marshal(&Response{
 		Code:    0,
 		Message: "success",
