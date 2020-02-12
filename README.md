@@ -10,8 +10,9 @@
   + [通过python3提交](#通过python3提交)
 
 + 获取数据
-  + [1、通过城市获取](#通过城市获取)
-  + [2、获取提交日志](#获取提交日志)
+  + [1、通过城市获取](#1、通过城市获取)
+  + [2、通过省级获取](#2、通过省级获取)
+  + [3、获取提交日志](#3、获取提交日志)
 
 
 
@@ -103,9 +104,37 @@ GET http://wuhan2020.muxxs.com/api/read?city=test
 }
 ```
 
+#### 2、通过省级获取
+
+> GET http://wuhan2020.muxxs.com/api/read?province=<省级名>
+>
+> 例如
+>
+> GET http://wuhan2020.muxxs.com/api/read?province=test
+
+```json
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "announce_type": "0",
+      "city": "test",
+      "content": "ttttttttttttttttttttt",
+      "link": "http://test.test",
+      "links_to_pic": "teeeeeeessst",
+      "province": "test",
+      "publish_date": "0000-00-00",
+      "publish_time": "00:00:00",
+      "title": "test"
+    }
+  ]
+}
+```
 
 
-#### 2、获取提交日志
+
+#### 3、获取提交日志
 
 > GET http://wuhan2020.muxxs.com/api/logs?limit=1
 

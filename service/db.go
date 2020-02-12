@@ -4,6 +4,9 @@ import (
 	"os"
 
 	"github.com/jinzhu/gorm"
+
+	// mysql 驱动
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
 var db *gorm.DB
