@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/arrebole/databox/controllers"
+	"github.com/arrebole/wuhan2020_api/controllers"
 )
 
 func main() {

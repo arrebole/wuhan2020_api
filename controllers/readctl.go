@@ -3,8 +3,8 @@ package controllers
 import (
 	"net/http"
 
-	"github.com/arrebole/databox/model"
-	"github.com/arrebole/databox/service"
+	"github.com/arrebole/wuhan2020_api/model"
+	"github.com/arrebole/wuhan2020_api/service"
 )
 
 // ReadCtl ...

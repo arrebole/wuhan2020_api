@@ -1,4 +1,4 @@
-module github.com/arrebole/databox
+module github.com/arrebole/wuhan2020_api
 
 go 1.13
 

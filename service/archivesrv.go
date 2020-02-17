@@ -1,6 +1,6 @@
 package service
 
-import "github.com/arrebole/databox/model"
+import "github.com/arrebole/wuhan2020_api/model"
 
 // SaveArchive ...
 func SaveArchive(archive *model.Archive) bool {
