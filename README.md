@@ -61,7 +61,7 @@ postdata = {
 }
 
 req = request.Request(
-    url="http://152.136.160.189/api/add", 
+    url="http://wuhan2020.muxxs.com/api/add", 
     headers=headers,
     data=json.dumps(data, ensure_ascii=False).encode("UTF-8")
 )
