@@ -2,24 +2,24 @@ package service
 
 import "github.com/arrebole/wuhan2020_api/model"
 
-// SaveArchive ...
-func SaveArchive(archive *model.Archive) bool {
-	if !exist(archive.Link) {
+// SaveArchive 创建返回0，更新返回1
+func SaveArchive(archive *model.Archive) int {
+	var item = find(archive.Link)
+	// 不存在
+	if item.ID == 0 {
 		db.Create(archive)
-		return true
+		return 0
 	}
-	return false
+	archive.ID = item.ID
+	db.Update(&archive)
+	return 1
 }
 
-// exist 判断链接是否已存在
-func exist(link string) bool {
-	var archives []model.Archive
-	var count = 0
-	db.Where("link = ?", link).Find(&archives).Count(&count)
-	if count > 0 {
-		return true
-	}
-	return false
+// find 判断链接是否已存在
+func find(link string) model.Archive {
+	var archive model.Archive
+	db.Where("link = ?", link).First(&archive)
+	return archive
 }
 
 // GetArchivesByCity ...

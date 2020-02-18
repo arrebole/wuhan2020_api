@@ -20,10 +20,10 @@ func FailResp(msg string) []byte {
 }
 
 // SuccessResp ...
-func SuccessResp() []byte {
+func SuccessResp(msg string) []byte {
 	result, _ := json.Marshal(&Response{
 		Code:    0,
-		Message: "ok",
+		Message: msg,
 		Data:    []Archive{},
 	})
 	return result

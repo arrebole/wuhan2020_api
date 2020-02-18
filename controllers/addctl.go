@@ -28,10 +28,10 @@ func AddCtl(w http.ResponseWriter, r *http.Request) {
 		w.Write(model.FailResp("Missing data field"))
 		return
 	}
-	if !service.SaveArchive(postdata.GetArchive()) {
-		w.Write(model.FailResp("existed"))
+	if service.SaveArchive(postdata.GetArchive()) == 1 {
+		w.Write(model.SuccessResp("update success"))
 		return
 	}
 	service.SaveLog(postdata.GetLog(r.RemoteAddr))
-	w.Write(model.SuccessResp())
+	w.Write(model.SuccessResp("add success"))
 }
