@@ -22,3 +22,9 @@ func ReadCtl(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Write(model.ArchivesResp(service.GetArchivesByCity(city)))
 }
+
+// ReadAllCtl ...
+func ReadAllCtl(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(model.ArchivesResp(service.GetArchivesAll()))
+}

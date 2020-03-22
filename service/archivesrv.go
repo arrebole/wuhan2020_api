@@ -29,6 +29,13 @@ func GetArchivesByCity(city string) []model.Archive {
 	return result
 }
 
+// GetArchivesAll ...
+func GetArchivesAll() []model.Archive {
+	var result []model.Archive
+	db.Find(&result)
+	return result
+}
+
 // GetArchivesByProvince ...
 func GetArchivesByProvince(province string) []model.Archive {
 	var result []model.Archive
